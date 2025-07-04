@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shonaya Adhikari - Accountant Portfolio</title>
+    <style>
+        /* Color Scheme */
+        :root {
+            --light-pink: #fff0f6;
+            --medium-pink: #ffcce6;
+            --dark-pink: #ff99cc;
+            --accent-pink: #ff66b3;
+            --text-color: #333;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-pink);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        header {
+            background-color: var(--medium-pink);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: var(--dark-pink);
+            color: white;
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            padding: 6rem 2rem 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--accent-pink);
+            position: relative;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-pink);
+        }
+
+        /* Hero Section */
+        #hero {
+            background-color: var(--light-pink);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 2rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .hero-content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-pink);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-pink);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+        }
+
+        .btn:hover {
+            background-color: var(--dark-pink);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* About Section */
+        #about {
+            background-color: white;
+        }
+
+        .about-container {
+            display: flex;
+            align-items: center;
+            max-width: 1000px;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-pink);
+        }
+
+        .about-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Skills Section */
+        #skills {
+            background-color: var(--light-pink);
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 900px;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            width: 250px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .skill-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-pink);
+        }
+
+        .skill-card h3 {
+            margin-bottom: 1rem;
+        }
+
+        /* Projects/Experience Section */
+        #experience {
+            background-color: white;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--medium-pink);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background-color: var(--light-pink);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .timeline-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--accent-pink);
+        }
+
+        .timeline-date {
+            font-weight: 600;
+            color: var(--dark-pink);
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: var(--light-pink);
+        }
+
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1000px;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            text-align: left;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-pink);
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .contact-detail i {
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            color: var(--accent-pink);
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--medium-pink);
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .about-container {
+                flex-direction: column;
+            }
+
+            .timeline::before {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Shonaya Adhikari</div>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Hello, I'm Shonaya Adhikari</h1>
+            <h2>Professional Accountant</h2>
+            <p>Specializing in financial analysis, tax preparation, and business consulting with 5+ years of experience helping businesses optimize their financial strategies.</p>
+            <a href="#contact" class="btn">Get In Touch</a>
+            <a href="#skills" class="btn">View My Skills</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-container">
+            <div class="about-text">
+                <h3>Dedicated Accountant with a Passion for Numbers</h3>
+                <p>I'm a certified professional accountant with extensive experience in financial reporting, tax planning, and business advisory services. My expertise lies in helping small to medium-sized businesses streamline their financial operations while ensuring regulatory compliance.</p>
+                <p>Graduated with honors from the University of Business and Finance, I bring a combination of technical accounting knowledge and practical problem-solving skills to every engagement. My approach focuses on delivering clear financial insights that drive business growth.</p>
+                <p>When I'm not crunching numbers, you can find me mentoring young accounting professionals or volunteering with financial literacy programs in my community.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://placehold.co/400x500/ff99cc/ffffff?text=Shonaya+Adhikari" alt="Professional portrait of Shonaya Adhikari, a female accountant in business attire" />
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title">My Skills</h2>
+        <div class="skills-container">
+            <div class="skill-card">
+                <i>📊</i>
+                <h3>Financial Reporting</h3>
+                <p>Preparation of detailed financial statements including balance sheets, income statements, and cash flow analysis.</p>
+            </div>
+            <div class="skill-card">
+                <i>💰</i>
+                <h3>Tax Preparation</h3>
+                <p>Comprehensive tax services including individual and corporate tax planning and filing.</p>
+            </div>
+            <div class="skill-card">
+                <i>📈</i>
+                <h3>Budget Analysis</h3>
+                <p>Developing and monitoring budgets to help businesses achieve financial objectives.</p>
+            </div>
+            <div class="skill-card">
+                <i>🔍</i>
+                <h3>Audit Support</h3>
+                <p>Conducting internal audits and preparing organizations for external audits.</p>
+            </div>
+            <div class="skill-card">
+                <i>💻</i>
+                <h3>Accounting Software</h3>
+                <p>Expertise in QuickBooks, Xero, FreshBooks, and other financial management systems.</p>
+            </div>
+            <div class="skill-card">
+                <i>📑</i>
+                <h3>Regulatory Compliance</h3>
+                <p>Ensuring financial practices adhere to all relevant laws and regulations.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2 class="section-title">Professional Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Senior Accountant</h3>
+                    <p class="timeline-date">2020 - Present</p>
+                    <p>Financial Solutions Inc. - Leading corporate accounting team, managing financial reporting, and implementing new accounting procedures that improved efficiency by 30%.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Tax Consultant</h3>
+                    <p class="timeline-date">2017 - 2020</p>
+                    <p>Tax Masters LLP - Provided tax advisory services to 50+ clients annually, specializing in small business tax optimization strategies.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Junior Accountant</h3>
+                    <p class="timeline-date">2015 - 2017</p>
+                    <p>ClearView Accounting - Managed bookkeeping for 15 clients while assisting with audit preparation and financial analysis.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Contact Me</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Get in Touch</h3>
+                <p>I'm currently available for new accounting projects and consultation engagements. Feel free to reach out for financial services or even just to say hello!</p>
+                <div class="contact-detail">
+                    <i>📧</i>
+                    <p>shonaya.adhikari@example.com</p>
+                </div>
+                <div class="contact-detail">
+                    <i>📱</i>
+                    <p>+1 (555) 123-4567</p>
+                </div>
+                <div class="contact-detail">
+                    <i>🏢</i>
+                    <p>123 Financial District, San Francisco, CA 94111</p>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Simple smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
